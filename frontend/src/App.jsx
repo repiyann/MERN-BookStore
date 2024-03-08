@@ -17,7 +17,7 @@ const App = () => {
 				element={<CreateBook />}
 			/>
 			<Route
-				path="/books/details/:id"
+				path="/books/detail/:id"
 				element={<ShowBook />}
 			/>
 			<Route
