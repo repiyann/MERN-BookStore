@@ -55,7 +55,23 @@ router.get('/detail/:id', async (request, response) => {
 	}
 })
 
-router.put('/:id', async (request, response) => {
+router.get('/edit/:id', async (request, response) => {
+	try {
+		const { id } = request.params
+		const books = await Book.findById(id)
+
+		if (!books) {
+			return response.status(404).json({ message: 'Book not found!' })
+		}
+
+		return response.status(200).json({ books })
+	} catch (error) {
+		console.log(error.message)
+		response.status(500).send({ message: error.message })
+	}
+})
+
+router.put('/edited/:id', async (request, response) => {
 	try {
 		if (!request.body.title || !request.body.author || !request.body.publishYear) {
 			return response.status(400).send({
