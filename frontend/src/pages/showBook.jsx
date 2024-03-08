@@ -8,8 +8,6 @@ const ShowBook = () => {
 	const [book, setBook] = useState({})
 	const [loading, setLoading] = useState(false)
 	const { id } = useParams()
-	const apiUrl = `http://localhost:8000/books/detail/${id}`
-	console.log('API URL:', apiUrl)
 
 	useEffect(() => {
 		setLoading(true)
@@ -17,7 +15,6 @@ const ShowBook = () => {
 			.get(`http://localhost:8000/books/detail/${id}`)
 			.then((response) => {
 				setBook(response.data.books)
-				console.log('API URL:', apiUrl)
 				setLoading(false)
 			})
 			.catch((error) => {
